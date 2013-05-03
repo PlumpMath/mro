@@ -15,7 +15,7 @@
                (web-client:http-options . http-options)))
 
 (define (http-get uri . args)
-  "Connect to the server corresponding to uri and make the appropriate GET request.
+  "Connects to the server corresponding to uri and make the appropriate GET request.
    Returns two values: the response read from the server, and the response body as a string, bytevector, #f value, or as a port (if streaming? is true).
 
    Keyword arguments:
