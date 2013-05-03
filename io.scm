@@ -11,6 +11,6 @@
     (do
       ((n-read (get-bytevector-n! producer buffer 0 block-size)
                (get-bytevector-n! producer buffer 0 block-size)))
-      ((eof-object? n-read))
+      ((eof-object? n-read) n-bytes-copied)
       (put-bytevector consumer buffer 0 n-read)
       (set! n-bytes-copied (+ n-bytes-copied n-read)))))
