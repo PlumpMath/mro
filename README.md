@@ -5,4 +5,4 @@ Utilities for GNU Guile
 
 ## How to use ##
 
-See [[How to Use|this]].
+See [this](https://github.com/mrordinaire/mro/wiki/How-to-Use).
