@@ -4,8 +4,8 @@
   #:export (copy-port))
 
 (define* (copy-port producer consumer #:optional (block-size 4096))
-  "Copies from producer port to consumer port.
-   Returns total number of bytes read from producer port."
+  "Copies from producer port to consumer port. Returns total number of bytes
+read from producer port."
   (let ((buffer (make-generalized-vector 'u8 block-size)))
     (do
       ((n-read (get-bytevector-n! producer buffer 0 block-size)
