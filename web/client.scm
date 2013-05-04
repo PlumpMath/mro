@@ -15,7 +15,8 @@
                (web-client:http-options . http-options)))
 
 (define (http-get uri . args)
-  "Connects to the server corresponding to uri and make the appropriate GET request.
+  "This function wraps around the GNU Guile's http-get procedure to provide automatic redirection.
+   Connects to the server corresponding to uri and make the appropriate GET request, if the reponse has code 301 or 302, and also has a location header, automatically follow the new location, otherwise, it behaves just like GNU Guile's http-get.
    Returns two values: the response read from the server, and the response body as a string, bytevector, #f value, or as a port (if streaming? is true).
 
    Keyword arguments:
@@ -38,8 +39,9 @@
       (let ((code (web-response:response-code response)))
        (if (or (= 301 code)     ; Moved Permanently 
                (= 302 code))    ; Found
-         (let ((new-location
-                 (cdr (assoc 'location
-                             (web-response:response-headers response)))))
-           (apply http-get (cons new-location args)))
+         (let ((pair (assoc 'location
+                            (web-response:response-headers response))))
+           (if pair
+             (apply http-get (cons (cdr pair) args))
+             (values response body)))
          (values response body))))))
