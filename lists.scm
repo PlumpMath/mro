@@ -12,7 +12,7 @@
   (helper l n '()))
 
 (define (random-elt l)
-  "Returns a randome element from the list l."
+  "Returns a random element from the list l."
   (list-ref l (random (length l))))
 
 (define (mappend f . args)
