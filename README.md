@@ -8,7 +8,7 @@ Utilities for GNU Guile
 
 1. If you have not set the `GUILE_LOAD_PATH` environment variable, you can do so by adding to your `.bashrc` the following
 ```bash
-export GUILE_LOAD_PATH=/path/to/repo/parent/dir/:GUILE_LOAD_PATH
+export GUILE_LOAD_PATH=/path/to/repo/parent/dir/:$GUILE_LOAD_PATH
 ```
 
 2. Clone the repository
