@@ -1,6 +1,6 @@
 (define-module
   (mro lists)
-  #:export (list-take))
+  #:export (list-take random-elt mappend))
 
 (define (list-take l n)
   "Takes n elements from the list l from the beginning.
@@ -10,3 +10,11 @@
       (reverse acc)
       (helper (cdr l) (- n 1) (cons (car l) acc))))
   (helper l n '()))
+
+(define (random-elt l)
+  "Returns a randome element from the list l."
+  (list-ref l (random (length l))))
+
+(define (mappend f . args)
+  "Maps f to the following list(s) and flattens the results."
+  (apply append (apply map (cons f args))))
